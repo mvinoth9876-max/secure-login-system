@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Enable 2FA{% endblock %}
+{% block content %}<div class="card narrow"><h1>Enable two-factor authentication</h1>
+<p class="muted">In your authenticator app, add an account manually using this secret:</p>
+<div class="secret">{{ secret }}</div>
+<p class="muted">Account: {{ uri.split('secret=')[0] }}</p>
+<p>Enter the current 6-digit code from your authenticator app to confirm setup.</p>
+<form method="post"><input type="hidden" name="_csrf_token" value="{{ csrf_token }}"><label>6-digit code</label><input name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required><button class="btn full">Confirm and enable</button></form>
+</div>{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Register · SecureLogin{% endblock %}
+{% block content %}
+<div class="card narrow"><h1>Create account</h1><p class="muted">Use a strong password to protect your account.</p>
+<form method="post">
+<input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+<label>Username</label><input name="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" autocomplete="username">
+<label>Email</label><input type="email" name="email" required autocomplete="email">
+<label>Password</label><input type="password" name="password" required minlength="8" autocomplete="new-password">
+<small>At least 8 characters, uppercase, lowercase, number and symbol.</small>
+<label>Confirm password</label><input type="password" name="confirm_password" required autocomplete="new-password">
+<button class="btn full" type="submit">Create account</button>
+</form><p class="center muted">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p></div>
+{% endblock %}

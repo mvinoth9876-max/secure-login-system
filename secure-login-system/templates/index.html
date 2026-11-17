@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">ACCOUNT SECURITY DEMO</div>
+  <h1>Authentication, made <span>safer.</span></h1>
+  <p>A secure login starter app with hashed passwords, protected database queries, sessions and optional two-factor authentication.</p>
+  <div class="actions"><a class="btn" href="{{ url_for('register') }}">Create account</a><a class="btn secondary" href="{{ url_for('login') }}">Sign in</a></div>
+</section>
+<section class="features">
+  <article><h3>🔒 Password hashing</h3><p>Passwords are stored as hashes, never as plain text.</p></article>
+  <article><h3>🛡️ SQL injection protection</h3><p>Database operations use parameterized SQL queries.</p></article>
+  <article><h3>📱 Optional 2FA</h3><p>Add a time-based authenticator code as a second login step.</p></article>
+</section>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Dashboard · SecureLogin{% endblock %}
+{% block content %}
+<div class="dashboard-head"><div><div class="eyebrow">YOUR ACCOUNT</div><h1>Hello, {{ user['username'] }} 👋</h1><p class="muted">Your account security settings.</p></div><span class="pill">● Signed in</span></div>
+<div class="grid">
+<section class="card"><h2>Account details</h2><p><b>Username:</b> {{ user['username'] }}</p><p><b>Email:</b> {{ user['email'] }}</p><p><b>Created:</b> {{ user['created_at'][:10] }}</p><a class="btn secondary" href="{{ url_for('change_password') }}">Change password</a></section>
+<section class="card"><h2>Two-factor authentication</h2>{% if user['twofa_enabled'] %}<p class="success-text">Enabled ✓</p><p class="muted">Your login requires an authenticator code.</p><form method="post" action="{{ url_for('disable_2fa') }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token }}"><label>Confirm password to disable</label><input type="password" name="password" required><button class="btn danger" type="submit">Disable 2FA</button></form>{% else %}<p class="muted">Add a second verification step using an authenticator app.</p><a class="btn" href="{{ url_for('enable_2fa') }}">Enable 2FA</a>{% endif %}</section>
+</div>
+{% endblock %}
